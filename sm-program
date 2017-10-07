@@ -1,0 +1,76 @@
+""" scientific method steps | 3 points total
+      1. problem statement | 1 point
+      2. obverse | 1 point
+      3. hypothesis | 1 point
+      4. experiment -- NO FUNCTION
+      5. analyze results -- NO FUNCTION
+      6. conclusion 
+"""
+understanding = {"good" : 0, "bad" : 0}
+
+def is_in_list(sentence,List): # detects if any word in a list matches with said word in a sentence
+  if any(words in sentence.lower() for words in List) == True:
+    return True
+  else: # there are no matching words between the list and the sentence
+    return False
+  
+  
+print "Sarah likes to make cookies, however hers always taste bland. Her friend suggested doubling the amount of sugar she uses to sweeten the cookies.\n"
+  
+def step_1():
+  global pr_statement # to be referenced along with hypothesis in anaylze data step
+  pr_statement = raw_input("What is Sarah's problem statement? (Type your answer and press 'Enter') ")
+  
+  keywords_good = ["why","what","will","?"]
+  
+  if is_in_list(pr_statement,keywords_good) == True:
+    understanding["good"] += 1
+  else:
+    understanding["bad"] += 1
+    
+    
+step_1()    
+
+def step_2():
+  global observation
+  observation = raw_input("Name one observation about Sarah's experiment so far. (Type your answer and press 'Enter') ")
+  keywords_good = ["cookies","bad","sugar","double","bland","friend"]
+  if is_in_list(observation,keywords_good) == True:
+    understanding["good"] += 1
+  else:
+    understanding["bad"] += 1
+
+step_2()    
+  
+def step_3():
+  global hypothesis
+  hypothesis = raw_input("What could Sarah's hypothesis be? (Type your answer and press 'Enter') ")
+  
+  keywords_good = ["if", "then"]
+  
+  if all(words in hypothesis.lower() for words in keywords_good) == True:
+    understanding["good"] += 1 # all here b/c both if & then must be included in hypothesis
+  else:
+    understanding["bad"] += 1
+
+step_3()
+
+print "\nSarah tries adding double the amount of sugar, and it does indeed make her cookies taste much sweeter.\n" # no function for step four -- experiment
+
+  
+print "Let's review!\nHere's your data so far:\n" + "Problem statement: " + str(pr_statement) + "\nHypothesis: " + str(hypothesis) + "\nObservation: " + str(observation) # this is step five; no function for it
+  
+def step_6():
+  conclusion = raw_input("Was your hypothesis correct? (Type your answer and press 'Enter')")
+  
+step_6()  
+
+def results_eval():
+  if understanding ["good"] == 3:
+    print "Congratulations--you have just demonstrated an excellent understanding of the scientific method and all of its steps!"
+  elif understanding["bad"] == 3 or understanding["bad"] == 2:
+    print "Looks like you need to work on your abilities in the scientific method. Better luck next time!"
+  else:  
+    print "You have just demonstrated an average understanding of the scientific method. Keep practicing."
+
+results_eval()
